@@ -1,6 +1,9 @@
 export function handleEditStyleChanges(id, checkbox) {
+  const todoItem = document.querySelector(`#id${id} .todo`);
+  todoItem.contentEditable = true;
+  todoItem.classList.add("editable");
   checkbox.style.display = "none";
-
+  
   const saveBtn = document.querySelector(`#id${id} .save`);
   saveBtn.classList.add("active");
 

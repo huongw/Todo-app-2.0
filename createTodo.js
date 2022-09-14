@@ -29,7 +29,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
     todoMessage.innerText = todo.message;
 
     const daysLeft = dateContainer.querySelector(".daysLeft");
-    daysLeft.innerText = todo.dateTime.daysLeft ===  null ? "" : "(" + todo.dateTime.daysLeft + " day(s) left)";
+    daysLeft.innerText = renderDaysLeft(todo.dateTime.daysLeft);
   })
 
   // Date container
@@ -40,7 +40,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
     ${todo.dateTime.fullDate ===  null ? "No Due Date" : "Due on " + todo.dateTime.fullDate}
   </span>
   <span class="daysLeft">
-    ${todo.dateTime.daysLeft ===  null ? "" : "(" + todo.dateTime.daysLeft + " day(s) left)"}
+    ${renderDaysLeft(todo.dateTime.daysLeft)}
   </span>`
   taskContainer.appendChild(dateContainer)
 
@@ -56,10 +56,6 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   btnsContainer.appendChild(editButton)
 
   editButton.addEventListener("click", () => {
-    const todoItem = document.querySelector(`#id${id} .todo`);
-    todoItem.contentEditable = true;
-    todoItem.classList.add("editable");
-
     handleEditStyleChanges(id, checkbox)
   })
   
@@ -111,7 +107,7 @@ function saveChanges(data, id, todoItem) {
       todo.task = todoItem.innerHTML;
     }
   });
-  
+
 }
 
 function cancelChanges(data, id, todoItem) {
@@ -120,4 +116,16 @@ function cancelChanges(data, id, todoItem) {
       todoItem.innerHTML = todo.task;
     }
   });
+}
+
+function renderDaysLeft(daysLeft) {
+  if (daysLeft < 0) {
+    return "Overdue"
+  } 
+  if (daysLeft === null) {
+    return ""
+  }
+  if (daysLeft >= 0) {
+    return "(" + daysLeft + " day(s) left)"
+  }
 }
