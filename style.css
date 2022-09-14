@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.save,
+.cancel,
+.edit {
+  display: none;
+}
+
+.active {
+  display: inline-block;
+}
+
+.editable {
+  border: 1px solid rgb(124, 123, 123);
+  padding: 5px;
+}
+
+.due__date,
+.daysLeft {
+  font-size: 11px;
+  color: green;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #000;
+  max-width: 400px;
+  height: 80px;
+}
+
+.task__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 65%;
+  height: 100%;
+}
+
+.todo__message {
+  font-size: 12px;
+  color: red;
+}
+
+.todo__content {
+  display: flex;
+}
+
+.todo {
+  margin-left: 10px;
+}
