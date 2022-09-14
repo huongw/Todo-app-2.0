@@ -5,8 +5,8 @@ export function calculateFullDate(newInputDate) {
   return fullDate;
 }
 
-export function calculateDaysLeft(fullDate) {
-  if(fullDate === null) return fullDate;
+export function calculateDaysLeft(fullDate, daysLeft = undefined) {
+  if (fullDate === null || daysLeft === null) return null;
 
   const seconds = 1000;
   const minutes = seconds * 60;
@@ -19,8 +19,8 @@ export function calculateDaysLeft(fullDate) {
   const currentDate = new Date().getTime();
   const diffInTime = dueDate - currentDate;
 
-  const daysLeft = Math.floor(diffInTime / days);
+  const updateDaysLeft = Math.floor(diffInTime / days);
 
-  return daysLeft;
+  return updateDaysLeft;
 }
 

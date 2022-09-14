@@ -1,21 +1,24 @@
-import { updateDaysLeft } from "./getDate.js";
+import {calculateDaysLeft} from "./calculateDate.js";
 
 export default (function handleLocalStorage () {
   function getFromLocalStorage(data) {
     let storageData = JSON.parse(localStorage.getItem("todos"));
     
     if (storageData) {
-      console.log("first", data)
-      updateDaysLeft(data);
-      console.log("fourth")
       data.todos = storageData.todos;
-      console.log("fifth")
       data.nextId = storageData.nextId;
+      updateDaysLeft(data.todos);
     }
   }
 
   function saveToLocalStorage(data) {
     localStorage.setItem("todos", JSON.stringify(data));
+  }
+
+  function updateDaysLeft(todos) {
+    todos.map((todo) => {
+      todo.dateTime.daysLeft = calculateDaysLeft(todo.dateTime.fullDate, todo.dateTime.daysLeft);
+    })
   }
 
   return {getFromLocalStorage, saveToLocalStorage}
