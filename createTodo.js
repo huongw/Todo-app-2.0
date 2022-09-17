@@ -1,4 +1,3 @@
-import { handleEditStyleChanges, handleSaveCancelStyleChanges } from "./handleButtonStyles.js";
 import completeTask from "./completeTask.js";
 
 export default function createTodo(data, todo, todoList, saveToLocalStorage) {
@@ -28,7 +27,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
     todoMessage.innerText = todo.message;
 
     const daysLeft = dateContainer.querySelector(".daysLeft");
-    daysLeft.innerText = renderDaysLeft(todo.dateTime.daysLeft);
+    daysLeft.innerText = updateDaysLeftText(todo.dateTime.daysLeft);
   })
 
   // Date container
@@ -39,7 +38,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
     ${todo.dateTime.fullDate ===  null ? "No Due Date" : "Due on " + todo.dateTime.fullDate}
   </span>
   <span class="daysLeft">
-    ${renderDaysLeft(todo.dateTime.daysLeft)}
+    ${updateDaysLeftText(todo.dateTime.daysLeft)}
   </span>`
   taskContainer.appendChild(dateContainer)
 
@@ -56,7 +55,14 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
 
   editButton.addEventListener("click", () => {
     const todoItem = document.querySelector(`#id${id} .todo`);
-    handleEditStyleChanges(id, todoItem, checkbox)
+    todoItem.contentEditable = true;
+    todoItem.classList.add("editable");
+
+    checkbox.classList.remove("active");
+
+    saveButton.classList.add("active");
+    editButton.classList.remove("active");
+    cancelButton.classList.add("active");
   })
   
   // Create save button
@@ -66,7 +72,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   btnsContainer.appendChild(saveButton)
   
   saveButton.addEventListener("click", () => {
-    handleSaveCancelChanges(data, id, saveChanges, checkbox)
+    handleSaveCancelChanges(data, id, saveChanges, checkbox, saveButton, cancelButton, editButton)
     saveToLocalStorage(data)
   })
   
@@ -77,7 +83,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   btnsContainer.appendChild(cancelButton)
   
   cancelButton.addEventListener("click", () => {
-    handleSaveCancelChanges(data, id, cancelChanges, checkbox)
+    handleSaveCancelChanges(data, id, cancelChanges, checkbox, saveButton, cancelButton, editButton)
   })
 
   // Create delete button
@@ -94,11 +100,18 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   return li
 };
 
-function handleSaveCancelChanges(data, id, callback, checkbox) {
+function handleSaveCancelChanges(data, id, updateSaveCancelChanges, checkbox, saveButton, cancelButton, editButton) {
   const todoItem = document.querySelector(`#id${id} .todo`);
-  handleSaveCancelStyleChanges(id, todoItem, checkbox);
+  todoItem.contentEditable = false;
+  todoItem.classList.remove("editable");
 
-  callback(data, id, todoItem);
+  checkbox.classList.add("active");
+
+  saveButton.classList.remove("active");
+  cancelButton.classList.remove("active");
+  editButton.classList.add("active");
+
+  updateSaveCancelChanges(data, id, todoItem);
 }
 
 function saveChanges(data, id, todoItem) {
@@ -118,7 +131,7 @@ function cancelChanges(data, id, todoItem) {
   });
 }
 
-function renderDaysLeft(daysLeft) {
+function updateDaysLeftText(daysLeft) {
   if (daysLeft < 0) {
     return "(Overdue)"
   } 
