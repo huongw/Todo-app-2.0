@@ -69,7 +69,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   const saveButton = document.createElement("button");
   saveButton.setAttribute("class", "save");
   saveButton.innerText = "Save";
-  btnsContainer.appendChild(saveButton)
+  btnsContainer.appendChild(saveButton);
   
   saveButton.addEventListener("click", () => {
     handleSaveCancelChanges(data, id, saveChanges, checkbox, saveButton, cancelButton, editButton)
@@ -80,7 +80,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   const cancelButton = document.createElement("button");
   cancelButton.setAttribute("class", "cancel");
   cancelButton.innerText = "Cancel";
-  btnsContainer.appendChild(cancelButton)
+  btnsContainer.appendChild(cancelButton);
   
   cancelButton.addEventListener("click", () => {
     handleSaveCancelChanges(data, id, cancelChanges, checkbox, saveButton, cancelButton, editButton)
