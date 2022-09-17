@@ -15,7 +15,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   taskContainer.innerHTML = `
   <span class="todo__message" id="message${todo.id}">${todo.message}</span>
   <span class="todo__content">
-    <input type="checkbox" class="checkbox" ${todo.isComplete ? "checked" : ""}>
+    <input type="checkbox" class="checkbox active" ${todo.isComplete ? "checked" : ""}>
     <span class="todo">${todo.task}</span>
   </span>
   `
@@ -55,7 +55,8 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   btnsContainer.appendChild(editButton)
 
   editButton.addEventListener("click", () => {
-    handleEditStyleChanges(id, checkbox)
+    const todoItem = document.querySelector(`#id${id} .todo`);
+    handleEditStyleChanges(id, todoItem, checkbox)
   })
   
   // Create save button

@@ -1,8 +1,7 @@
-export function handleEditStyleChanges(id, checkbox) {
-  const todoItem = document.querySelector(`#id${id} .todo`);
+export function handleEditStyleChanges(id, todoItem, checkbox) {
   todoItem.contentEditable = true;
   todoItem.classList.add("editable");
-  checkbox.style.display = "none";
+  checkbox.classList.remove("active");
   
   const saveBtn = document.querySelector(`#id${id} .save`);
   saveBtn.classList.add("active");
@@ -16,9 +15,8 @@ export function handleEditStyleChanges(id, checkbox) {
 
 export function handleSaveCancelStyleChanges(id, todoItem, checkbox) {
   todoItem.contentEditable = false;
-  checkbox.style.display = "block";
-
   todoItem.classList.remove("editable");
+  checkbox.classList.add("active");
 
   const saveBtn = document.querySelector(`#id${id} .save`);
   saveBtn.classList.remove("active");

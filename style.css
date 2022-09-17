@@ -6,7 +6,8 @@
 
 .save,
 .cancel,
-.edit {
+.edit,
+.checkbox {
   display: none;
 }
 
