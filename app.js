@@ -15,20 +15,21 @@ import render from "./renderTodos.js"
   
   filter.addEventListener("change", () => {
     data.todos.map(todo => {
+      const todoItem = document.getElementById(`id${todo.id}`);
       if (filter.value === "complete") {
            if (todo.isComplete) {
-            document.getElementById(`id${todo.id}`).style.display = "flex";
+            todoItem.style.display = "flex";
           } else {
-            document.getElementById(`id${todo.id}`).style.display = "none";
+            todoItem.style.display = "none";
           }
         } else if (filter.value === "incomplete") {
           if (!todo.isComplete) {
-            document.getElementById(`id${todo.id}`).style.display = "flex";
+            todoItem.style.display = "flex";
           } else {
-            document.getElementById(`id${todo.id}`).style.display = "none";
+            todoItem.style.display = "none";
           }
         } else {
-            document.getElementById(`id${todo.id}`).style.display = "flex";
+            todoItem.style.display = "flex";
         }
       })
   })
