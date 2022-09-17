@@ -119,7 +119,7 @@ function cancelChanges(data, id, todoItem) {
 
 function renderDaysLeft(daysLeft) {
   if (daysLeft < 0) {
-    return "Overdue"
+    return "(Overdue)"
   } 
   if (daysLeft === null) {
     return ""
@@ -128,9 +128,9 @@ function renderDaysLeft(daysLeft) {
     return "(" + daysLeft + " day(s) left)"
   } 
   if (daysLeft === 0) {
-    return "Due Today"
+    return "(Due Today)"
   }
   if (daysLeft === 1) {
-    return "Due Tomorrow"
+    return "(Due Tomorrow)"
   }
 }
