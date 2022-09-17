@@ -10,6 +10,32 @@ import render from "./renderTodos.js"
 
 // ======================
 
+(function filterTodos(data) {
+  const filter = document.querySelector(".select__container");
+  
+  filter.addEventListener("change", () => {
+    data.todos.map(todo => {
+      if (filter.value === "complete") {
+           if (todo.isComplete) {
+            document.getElementById(`id${todo.id}`).style.display = "flex";
+          } else {
+            document.getElementById(`id${todo.id}`).style.display = "none";
+          }
+        } else if (filter.value === "incomplete") {
+          if (!todo.isComplete) {
+            document.getElementById(`id${todo.id}`).style.display = "flex";
+          } else {
+            document.getElementById(`id${todo.id}`).style.display = "none";
+          }
+        } else {
+            document.getElementById(`id${todo.id}`).style.display = "flex";
+        }
+      })
+  })
+})(currentState);
+
+// ======================
+
 (function SubmitTodo (data, {saveToLocalStorage}, {renderTodo}) {
   const todoForm = document.querySelector("#todo__form");
   

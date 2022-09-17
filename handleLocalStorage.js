@@ -14,7 +14,7 @@ export default (function handleLocalStorage () {
   function saveToLocalStorage(data) {
     localStorage.setItem("todos", JSON.stringify(data));
   }
-
+  
   function updateDaysLeft(todos) {
     todos.map((todo) => {
       todo.dateTime.daysLeft = calculateDaysLeft(todo.dateTime.fullDate, todo.dateTime.daysLeft);

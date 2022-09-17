@@ -12,6 +12,6 @@ export default (function render({saveToLocalStorage}) {
     todoList.append(createTodo(data, todo, todoList, saveToLocalStorage))
   }
 
-  return {renderTodos, renderTodo}
+  return {todoList, renderTodos, renderTodo}
 
 })(handleLocalStorage);

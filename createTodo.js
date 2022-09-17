@@ -9,14 +9,13 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   const li = document.createElement("li");
   li.setAttribute("id", `id${id}`);
 
-
   // Task container
   const taskContainer = document.createElement("span");
   taskContainer.setAttribute("class", "task__container");
   taskContainer.innerHTML = `
   <span class="todo__message" id="message${todo.id}">${todo.message}</span>
   <span class="todo__content">
-    <input type="checkbox" class="checkbox">
+    <input type="checkbox" class="checkbox" ${todo.isComplete ? "checked" : ""}>
     <span class="todo">${todo.task}</span>
   </span>
   `
@@ -125,7 +124,13 @@ function renderDaysLeft(daysLeft) {
   if (daysLeft === null) {
     return ""
   }
-  if (daysLeft >= 0) {
+  if (daysLeft > 1) {
     return "(" + daysLeft + " day(s) left)"
+  } 
+  if (daysLeft === 0) {
+    return "Due Today"
+  }
+  if (daysLeft === 1) {
+    return "Due Tomorrow"
   }
 }
