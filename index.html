@@ -8,18 +8,21 @@
   <title>Todo App</title>
 </head>
 <body>
-  <form id="todo__form">
-    <input type="text" id="input__text">
-    <input type="date" id="input__date">
-    <button type="submit" id="submitBtn">Submit</button>
-    <select class="select__container">
-      <option value="all">All</option>
-      <option value="complete">Complete</option>
-      <option value="incomplete">Incomplete</option>
-    </select>
-  </form>
-
-  <ul id="todo__list"></ul>
+  <div class="todo__container">
+    <form id="todo__form">
+      <input type="text" id="input__text">
+      <input type="date" id="input__date">
+      <button type="submit" id="submitBtn">Submit</button>
+      <select class="select__container">
+        <option value="all">All</option>
+        <option value="complete">Complete</option>
+        <option value="incomplete">Incomplete</option>
+      </select>
+    </form>
+  
+    <ul id="todo__list"></ul>
+  </div>
+  
 
   <script type="module" src="./app.js"></script>
 </body>

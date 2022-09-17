@@ -12,7 +12,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   const taskContainer = document.createElement("span");
   taskContainer.setAttribute("class", "task__container");
   taskContainer.innerHTML = `
-  <span class="todo__message" id="message${todo.id}">${todo.message}</span>
+  <span class="todo__message">${todo.message}</span>
   <span class="todo__content">
     <input type="checkbox" class="checkbox" ${todo.isComplete ? "checked" : ""}>
     <span class="todo">${todo.task}</span>
