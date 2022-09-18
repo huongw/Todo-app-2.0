@@ -213,7 +213,7 @@ input[type="checkbox"] {
   border: none;
   color: rgb(154, 103, 226);
   background-color: #fff;
-  padding-left: 2%;
+  padding-left: 10%;
 }
 
 /* Icons */
@@ -237,6 +237,15 @@ i {
 .fa-pencil-alt {
   font-size: 25px !important;
   color: #fff;
+}
+
+.fa-calendar-alt {
+  position: absolute;
+  left: 2.5%;
+  margin: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 /* Date */
@@ -314,34 +323,33 @@ img {
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .material-icons,
-  i {
-    font-size: 5vw !important;
+@media only screen and (max-width: 650px) {
+  .form__wrapper {
+    width: 70%;
   }
+  .select {
+    width: 50%;
+  }
+}
 
+@media only screen and (max-width: 450px) {
   #todo__form {
     height: auto;
   }
-
-  .form__wrapper {
-    width: 80%;
-  }
-
+  
   h1 {
     font-size: 7vw;
   }
-
+  
   .fa-pencil-alt {
     font-size: 6vw !important;
   }
-
+  
   .todo__content {
     font-size: 4vw;
   }
-
-  .select {
-    width: 50%;
+  #input__date {
+    padding-left: 12%;
   }
 }
 
@@ -356,6 +364,10 @@ img {
   i {
     margin: 0 2px;
   }
+  .material-icons,
+  i {
+    font-size: 4.5vw !important;
+  }
 }
 
 @media only screen and (max-width: 310px) {
@@ -367,5 +379,11 @@ img {
   }
   .editable {
     padding: 2px;
+  }
+  .form__wrapper {
+    width: 90%;
+  }
+  .select {
+    width: 70%;
   }
 }
