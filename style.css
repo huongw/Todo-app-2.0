@@ -1,3 +1,4 @@
+/* General */
 * {
   padding: 0;
   margin: 0;
@@ -18,10 +19,7 @@ h1 {
   color: #fff;
 }
 
-.fa-pencil-alt {
-  font-size: 25px !important;
-}
-
+/* Todo */
 #todo__form {
   min-height: 200px;
   border-bottom: 1px solid rgb(155, 154, 154);
@@ -49,61 +47,6 @@ h1 {
   width: 90%;
   min-width: 230px;
   margin: 5vh 0;
-}
-
-#todo__list {
-  min-height: 70vh;
-  width: 100%;
-  background-color: #fff;
-}
-
-li {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 5px;
-}
-
-li:nth-of-type(odd) {
-  background-color: rgba(212, 228, 236, 0.5);
-}
-li:nth-of-type(even) {
-  background-color: rgba(184, 206, 219, 0.5);
-}
-
-#submitBtn,
-.select__container,
-#input__date,
-#input__text {
-  height: 30px;
-  outline: none;
-  width: 85%;
-}
-
-#submitBtn {
-  width: 15%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0;
-  border: 1px solid rgb(227, 139, 227);
-  background-color: rgb(227, 139, 227);
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-}
-
-.fa-plus {
-  color: #fff;
-}
-
-.editable {
-  border: 1px solid rgb(135, 119, 141);
-  padding: 5px;
-  width: 95%;
-  word-wrap: break-word;
-  outline: 1px solid rgb(227, 139, 227);
 }
 
 .task__container {
@@ -134,11 +77,79 @@ li:nth-of-type(even) {
   margin-left: 10px;
 }
 
+#todo__list {
+  min-height: 70vh;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* List Items */
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+li:nth-of-type(odd) {
+  background-color: rgba(212, 228, 236, 0.5);
+}
+li:nth-of-type(even) {
+  background-color: rgba(184, 206, 219, 0.5);
+}
+
+.editable {
+  border: 1px solid rgb(135, 119, 141);
+  padding: 5px;
+  width: 95%;
+  word-wrap: break-word;
+  outline: 1px solid rgb(227, 139, 227);
+}
+
+
+/* Buttons */
+#submitBtn,
+.select__container,
+#input__date,
+#input__text {
+  height: 30px;
+  outline: none;
+  width: 85%;
+}
+
+#submitBtn {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  border: 1px solid rgb(227, 139, 227);
+  background-color: rgb(227, 139, 227);
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  transition: .2s linear;
+}
+
+#submitBtn:hover {
+  background-color: rgb(154, 103, 226);
+  border: 1px solid rgb(154, 103, 226);
+}
+
 .button__container {
   width: 100px;
   text-align: center;
 }
 
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* Select */
 .select__container {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -168,6 +179,7 @@ li:nth-of-type(even) {
   color: rgb(154, 103, 226);
   pointer-events: none;
   margin: 0;
+  transition: .2s linear;
 }
 
 .select:hover .fa-chevron-down {
@@ -175,6 +187,7 @@ li:nth-of-type(even) {
   background-color: rgb(154, 103, 226)!important;
 }
 
+/* Input */
 input[type="checkbox"] {
   -webkit-filter: hue-rotate(266deg) saturate(92%);
   filter: hue-rotate(266deg) saturate(92%);
@@ -193,11 +206,9 @@ input[type="checkbox"] {
   padding-left: 10%;
 }
 
-.date {
-  position: relative;
-  width: 85%;
-  background-color: #fff;
-  border: 1px solid #9f9a9a;
+/* Icons */
+.fa-plus {
+  color: #fff;
 }
 
 .material-icons,
@@ -221,13 +232,11 @@ i {
   pointer-events: none;
 }
 
-button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
+.fa-pencil-alt {
+  font-size: 25px !important;
 }
 
+/* Date */
 .date__container {
   line-height: 10px;
 }
@@ -238,6 +247,14 @@ button {
   color: rgb(154, 103, 226);
 }
 
+.date {
+  position: relative;
+  width: 85%;
+  background-color: #fff;
+  border: 1px solid #9f9a9a;
+}
+
+/* Images */
 .img__wrapper {
   position: absolute;
   bottom: 4vh;
@@ -275,6 +292,7 @@ img {
   text-align: center;
 }
 
+/* Other */
 .save,
 .cancel,
 .edit,
