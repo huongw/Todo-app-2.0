@@ -213,7 +213,8 @@ input[type="checkbox"] {
   border: none;
   color: rgb(154, 103, 226);
   background-color: #fff;
-  text-align: center;
+  width: 90%;
+  justify-self: flex-end;
 }
 
 /* Icons */
@@ -264,6 +265,7 @@ i {
   width: 85%;
   background-color: #fff;
   border: 1px solid #9f9a9a;
+  display: grid;
 }
 
 /* Images */
