@@ -140,7 +140,7 @@ function updateDaysLeftText(daysLeft) {
     return ""
   }
   if (daysLeft > 1) {
-    return "(" + daysLeft + " day(s) left)"
+    return "(" + daysLeft + " days left)"
   } 
   if (daysLeft === 0) {
     return "(Due Today)"
