@@ -1,6 +1,6 @@
 !["Home page of todo app"]()
 !["Edit task"]()
-!["Complete task"]()
+!["Complete task"](https://github.com/huongw/todo-app-2.0/blob/master/docs/complete_task.png?raw=true)
 
 # Todo App
 
