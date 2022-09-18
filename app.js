@@ -34,8 +34,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 (function filterTodos(data, {filter}) {
   filter.addEventListener("change", () => {
+
     data.todos.map(todo => {
       const todoItem = document.getElementById(`id${todo.id}`);
+
       if (filter.value === "complete") {
            if (todo.isComplete) {
             todoItem.style.display = "flex";

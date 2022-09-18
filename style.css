@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   background: rgb(213,147,198);
   background: linear-gradient(90deg, rgba(213,147,198,1) 18%, rgba(0,212,255,1) 100%);
+  font-family: 'Nunito', sans-serif;
 }
 
 h1 {
@@ -98,10 +99,11 @@ li:nth-of-type(even) {
 }
 
 .editable {
-  border: 1px solid rgb(124, 123, 123);
+  border: 1px solid rgb(135, 119, 141);
   padding: 5px;
   width: 95%;
   word-wrap: break-word;
+  outline: 1px solid rgb(227, 139, 227);
 }
 
 .task__container {
@@ -125,6 +127,7 @@ li:nth-of-type(even) {
   margin: 10px 0;
   word-break: break-word;
   display: flex;
+  font-family: 'Handlee', cursive;
 }
 
 .todo {
@@ -157,13 +160,19 @@ li:nth-of-type(even) {
 .fa-chevron-down {
   position: absolute;
   right: 0;
-  width: 15px;
+  width: 20%;
   height: 100%;
   display: flex!important;
   align-items: center;
   justify-content: center;
   color: rgb(154, 103, 226);
   pointer-events: none;
+  margin: 0;
+}
+
+.select:hover .fa-chevron-down {
+  color: #fff!important;
+  background-color: rgb(154, 103, 226)!important;
 }
 
 input[type="checkbox"] {
@@ -231,8 +240,8 @@ button {
 
 .img__wrapper {
   position: absolute;
-  bottom: 0;
-  right: 3vw;
+  bottom: 4vh;
+  right: 2vw;
   width: 300px;
   height: 300px;
 }
@@ -277,7 +286,14 @@ img {
   display: inline-block;
 }
 
-@media only screen and (max-width: 550px) {
+/* Media Queries */
+@media only screen and (max-width: 1200px) {
+  .img__wrapper {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 650px) {
   #input__date {
     padding-left: 15%;
   }

@@ -7,7 +7,7 @@ export default function completeTask(data, id, saveToLocalStorage, editButton, m
       
       if (!todo.isComplete) {
         todo.isComplete = true;
-        todo.message = "Complete";
+        todo.message = "Completed";
         todo.dateTime.daysLeft = null;
         editButton.classList.remove("active");
         message.classList.add("complete");
