@@ -12,17 +12,18 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   const taskContainer = document.createElement("span");
   taskContainer.setAttribute("class", "task__container");
   taskContainer.innerHTML = `
-  <span class="todo__message">${todo.message}</span>
+  <span class="todo__message ${todo.isComplete ? "complete" : ""}">${todo.message}</span>
   <span class="todo__content">
-    <input type="checkbox" class="checkbox" ${todo.isComplete ? "checked" : ""}>
+    <input type="checkbox" class="checkbox active" ${todo.isComplete ? "checked" : ""}>
     <span class="todo">${todo.task}</span>
   </span>
   `
   li.appendChild(taskContainer)
 
   const checkbox = taskContainer.querySelector(".checkbox");
+  const message = taskContainer.querySelector(".todo__message");
   checkbox.addEventListener("click", () => {
-    completeTask(data, id, saveToLocalStorage, editButton);
+    completeTask(data, id, saveToLocalStorage, editButton, message);
     const todoMessage = taskContainer.querySelector(".todo__message");
     todoMessage.innerText = todo.message;
 
@@ -50,7 +51,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   // Create edit button
   const editButton = document.createElement("button");
   editButton.setAttribute("class", `edit ${!todo.isComplete ? "active" : ""}`);
-  editButton.innerText = "Edit";
+  editButton.innerHTML = `<i class="fa fa-edit"></i>`;
   btnsContainer.appendChild(editButton)
 
   editButton.addEventListener("click", () => {
@@ -68,7 +69,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   // Create save button
   const saveButton = document.createElement("button");
   saveButton.setAttribute("class", "save");
-  saveButton.innerText = "Save";
+  saveButton.innerHTML = `<i class="fa fa-save"></i>`;
   btnsContainer.appendChild(saveButton);
   
   saveButton.addEventListener("click", () => {
@@ -79,7 +80,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   // Create cancel button
   const cancelButton = document.createElement("button");
   cancelButton.setAttribute("class", "cancel");
-  cancelButton.innerText = "Cancel";
+  cancelButton.innerHTML = `<i class="material-icons">&#xe5cd;</i>`;
   btnsContainer.appendChild(cancelButton);
   
   cancelButton.addEventListener("click", () => {
@@ -88,7 +89,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
 
   // Create delete button
   const deleteButton = document.createElement("button");
-  deleteButton.innerText = "Delete";
+  deleteButton.innerHTML = `<i class="fa fa-trash-o"></i>`;
   btnsContainer.appendChild(deleteButton)
 
   deleteButton.addEventListener("click", () => {

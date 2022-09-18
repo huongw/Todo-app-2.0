@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function addTodo(inputTextValue, inputDateValue) {
     const todoObj = {
       id: data.nextId++,
-      task: inputTextValue,
+      task: inputTextValue.charAt(0).toUpperCase() + inputTextValue.slice(1),
       isComplete: false,
       dateTime: getDate(inputDateValue.split("-")),
       message: "Incomplete"
