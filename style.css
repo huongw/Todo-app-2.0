@@ -118,7 +118,7 @@ li:nth-of-type(even) {
 }
 
 .todo__message.complete {
-  color: rgb(1, 104, 37);
+  color: rgb(136, 91, 200);
 }
 
 .todo__content {
@@ -137,7 +137,38 @@ li:nth-of-type(even) {
 }
 
 .select__container {
-  width: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  width: 100%;
+  cursor: pointer;
+  color: rgb(154, 103, 226);
+}
+
+.select {
+  position: relative;
+  width: 25%;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  right: 0;
+  width: 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(154, 103, 226);
+  pointer-events: none;
+}
+
+input[type="checkbox"] {
+  -webkit-filter: hue-rotate(266deg) saturate(92%);
+  filter: hue-rotate(266deg) saturate(92%);
 }
 
 #input__text {
@@ -150,11 +181,11 @@ li:nth-of-type(even) {
   cursor: pointer;
   width: 100%;
   border: none;
+  padding-left: 10%;
 }
 
 .date {
   position: relative;
-  padding-left: 10%;
   width: 85%;
   background-color: #fff;
   border: 1px solid #9f9a9a;
@@ -178,6 +209,7 @@ i {
   margin: 0;
   top: 50%;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
 button {
@@ -190,7 +222,7 @@ button {
 .due__date,
 .daysLeft {
   font-size: 11px;
-  color: rgb(53, 0, 128);
+  color: rgb(154, 103, 226);
 }
 
 .save,
@@ -228,5 +260,9 @@ button {
 
   .todo__content {
     font-size: 5vw;
+  }
+
+  .select__container {
+    width: 50%;
   }
 }

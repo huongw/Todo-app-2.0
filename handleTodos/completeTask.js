@@ -1,4 +1,4 @@
-import { calculateDaysLeft } from "./calculateDate.js";
+import { calculateDaysLeft } from "../helpers/calculateDate.js";
 
 export default function completeTask(data, id, saveToLocalStorage, editButton, message) {
   data.todos.map((todo) => {

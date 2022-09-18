@@ -1,4 +1,4 @@
-import {calculateDaysLeft} from "./calculateDate.js";
+import {calculateDaysLeft} from "../helpers/calculateDate.js";
 
 export default (function handleLocalStorage () {
   function getFromLocalStorage(data) {

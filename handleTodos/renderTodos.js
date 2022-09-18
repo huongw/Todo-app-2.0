@@ -1,4 +1,4 @@
-import handleLocalStorage from "./handleLocalStorage.js";
+import handleLocalStorage from "../handleLocalStorage/handleLocalStorage.js";
 import createTodo from "./createTodo.js";
 
 export default (function render({saveToLocalStorage}) {

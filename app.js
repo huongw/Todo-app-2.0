@@ -1,7 +1,7 @@
-import handleLocalStorage from "./handleLocalStorage.js";
-import currentState from "./data.js";
-import getDate from "./getDate.js";
-import render from "./renderTodos.js"
+import handleLocalStorage from "./handleLocalStorage/handleLocalStorage.js";
+import currentState from "./data/data.js";
+import getDate from "./helpers/getDate.js";
+import render from "./handleTodos/renderTodos.js"
 
 const allInputs = (function () {
   const inputDate = document.querySelector("#input__date");
