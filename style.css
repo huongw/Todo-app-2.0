@@ -219,6 +219,10 @@ button {
   background-color: transparent;
 }
 
+.date__container {
+  line-height: 10px;
+}
+
 .due__date,
 .daysLeft {
   font-size: 11px;
@@ -236,10 +240,16 @@ button {
   display: inline-block;
 }
 
+@media only screen and (max-width: 550px) {
+  #input__date {
+    padding-left: 15%;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .material-icons,
   i {
-    font-size: 6vw !important;
+    font-size: 5vw !important;
   }
 
   #todo__form {
@@ -259,10 +269,35 @@ button {
   }
 
   .todo__content {
-    font-size: 5vw;
+    font-size: 4vw;
   }
 
-  .select__container {
+  .select {
     width: 50%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .due__date, .daysLeft {
+    font-size: 10px;
+  }
+  .button__container {
+    width: 65px;
+  }
+  .material-icons,
+  i {
+    margin: 0 2px;
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .todo__message {
+    font-size: 10px;
+  }
+  .due__date, .daysLeft {
+    font-size: 8px;
+  }
+  .editable {
+    padding: 2px;
   }
 }
