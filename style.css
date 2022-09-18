@@ -209,10 +209,11 @@ input[type="checkbox"] {
 #input__date {
   font-size: 12px;
   cursor: pointer;
-  width: 90%;
+  width: 95%;
   border: none;
   color: rgb(154, 103, 226);
   background-color: #fff;
+  text-align: center;
 }
 
 /* Icons */
@@ -264,7 +265,7 @@ i {
   border: 1px solid #9f9a9a;
   display: flex;
   background-color: #fff;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 /* Images */
