@@ -163,7 +163,7 @@ button {
   outline: none;
   background-color: #fff;
   width: 100%;
-  padding-left: 5%;
+  padding-left: 2%;
   cursor: pointer;
   color: rgb(154, 103, 226);
   font-family: 'Nunito', sans-serif;
@@ -213,6 +213,7 @@ input[type="checkbox"] {
   border: none;
   color: rgb(154, 103, 226);
   background-color: #fff;
+  padding-left: 2%;
 }
 
 /* Icons */
