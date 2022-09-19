@@ -325,7 +325,7 @@ img {
 
 @media only screen and (max-width: 650px) {
   .form__wrapper {
-    width: 70%;
+    width: 80%;
   }
   .select {
     width: 50%;
@@ -333,6 +333,11 @@ img {
 }
 
 @media only screen and (max-width: 450px) {
+  #todo__container {
+    margin: 1.5vh 0;
+    width: 95%;
+  }
+
   #todo__form {
     height: auto;
   }
