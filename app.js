@@ -85,13 +85,20 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     data.todos.push(todoObj)
-    
-    data.todos.sort((a, b) => { 
+
+    // filter null dates and dates that exist (1)
+    const nullDates = data.todos.filter(todo  => !todo.dateTime.fullDate);
+    const allDates = data.todos.filter(todo => todo.dateTime.fullDate).sort((a, b) => { 
       if (a.dateTime.daysLeft < b.dateTime.daysLeft) return -1 
       if (a.dateTime.daysLeft > b.dateTime.daysLeft) return 1
       return 0
     });
-    
+
+    // then concat the null dates to the end of the data.todos array (2)
+    const newData = allDates.concat(nullDates);
+
+    data.todos = newData; // new array is inserted
+
     saveToLocalStorage(data);
     renderTodos(data);
   }
