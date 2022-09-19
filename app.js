@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const { inputDate, inputText, filter } = allInputs;
 
     inputDate.min = new Date().toISOString().split("T")[0];
-
     inputDate.value = "";
     inputText.value = "";
     filter.value = "all";
@@ -70,8 +69,6 @@ window.addEventListener('DOMContentLoaded', () => {
   todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (!inputText.value) return alert("Please add a task first!");
-    
     addTodo(inputText.value, inputDate.value);
     
     inputText.value = "";
