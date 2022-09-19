@@ -73,6 +73,9 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   btnsContainer.appendChild(saveButton);
   
   saveButton.addEventListener("click", () => {
+    const todoItem = document.querySelector(`#id${id} .todo`);
+    if (!todoItem.innerText) return alert("Input field cannot be empty!");
+
     handleSaveCancelChanges(data, id, saveChanges, checkbox, saveButton, cancelButton, editButton)
     saveToLocalStorage(data)
   })
