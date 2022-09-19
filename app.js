@@ -19,6 +19,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if (windowReloaded) {
     const { inputDate, inputText, filter } = allInputs;
 
+    inputDate.min = new Date().toISOString().split("T")[0];
+
     inputDate.value = "";
     inputText.value = "";
     filter.value = "all";
