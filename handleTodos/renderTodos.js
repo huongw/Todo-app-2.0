@@ -5,17 +5,15 @@ export default (function render({saveToLocalStorage}) {
   const todoList = document.querySelector("#todo__list");
 
   function renderTodos(data) {
-    data.todos.map((todo) => todoList.prepend(createTodo(data, todo, todoList, saveToLocalStorage)));
+    todoList.innerHTML = "";
+    data.todos.map((todo) => todoList.append(createTodo(data, todo, todoList, saveToLocalStorage)));
   }
 
   function renderFilteredTodos(data, todos) {
     todos.map((todo) => todoList.append(createTodo(data, todo, todoList, saveToLocalStorage)));
   }
   
-  function renderTodo(data, todo) {
-    todoList.prepend(createTodo(data, todo, todoList, saveToLocalStorage))
-  }
 
-  return {todoList, renderTodos, renderTodo, renderFilteredTodos}
+  return {todoList, renderTodos, renderFilteredTodos}
 
 })(handleLocalStorage);

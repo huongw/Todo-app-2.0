@@ -34,36 +34,34 @@ window.addEventListener('DOMContentLoaded', () => {
 // ======================
 
 (function filterTodos(data, {filter}, {todoList, renderTodos}) {
-  filter.addEventListener("change", () => {
-    data.todos.map(todo => {
-      if (filter.value === "complete" && todo.isComplete) {
-        const filterCompleteTasks = data.todos.filter(todo => todo.isComplete);
-        return clearAndFilterTodoList(todoList, data, filterCompleteTasks);
-      } 
-      if (filter.value === "incomplete" && !todo.isComplete) {
-        const filterIncompleteTasks = data.todos.filter(todo => !todo.isComplete)
-        return clearAndFilterTodoList(todoList, data, filterIncompleteTasks);
-      } 
-      if (filter.value === "tasksDueSoon") {
-        const filterTasksDueSoon = data.todos.filter(todo => !todo.isComplete).filter(todo => todo.dateTime.fullDate)
-        .sort((a, b) => { 
-          if (a.dateTime.daysLeft < b.dateTime.daysLeft) return -1 
-          if (a.dateTime.daysLeft > b.dateTime.daysLeft) return 1 
-        });
 
-        return clearAndFilterTodoList(todoList, data, filterTasksDueSoon);
-      } 
-      if (filter.value === "all") {
+  filter.addEventListener("change", () => {
+    if (filter.value === "complete") {
+      if (data.todos.every((todo) => !todo.isComplete)) {
         todoList.innerHTML = "";
-        return renderTodos(data);
+        return;
       }
-    })
+      const filterCompleteTasks = data.todos.filter(todo => todo.isComplete);
+      clearAndFilterTodoList(todoList, data, filterCompleteTasks);
+
+    } else if (filter.value === "incomplete") {
+      if (data.todos.every((todo) => todo.isComplete)) {
+        todoList.innerHTML = ""
+        return;
+      }
+      const filterIncompleteTasks = data.todos.filter(todo => !todo.isComplete)
+      return clearAndFilterTodoList(todoList, data, filterIncompleteTasks);
+
+    } else if (filter.value === "all") {
+      todoList.innerHTML = "";
+      renderTodos(data);
+    }
   })
 })(currentState, allInputs, render);
 
 // ======================
 
-(function SubmitTodo (data, {saveToLocalStorage}, {renderTodo}, {inputText, inputDate}) {
+(function SubmitTodo (data, {saveToLocalStorage}, {renderTodos}, {inputText, inputDate}) {
   const todoForm = document.querySelector("#todo__form");
   
   todoForm.addEventListener("submit", (e) => {
@@ -85,10 +83,17 @@ window.addEventListener('DOMContentLoaded', () => {
       dateTime: getDate(inputDateValue.split("-")),
       message: "Incomplete"
     }
-    data.todos.push(todoObj);
+
+    data.todos.push(todoObj)
+    
+    data.todos.sort((a, b) => { 
+      if (a.dateTime.daysLeft < b.dateTime.daysLeft) return -1 
+      if (a.dateTime.daysLeft > b.dateTime.daysLeft) return 1
+      return 0
+    });
     
     saveToLocalStorage(data);
-    renderTodo(data, todoObj)
+    renderTodos(data);
   }
 
 })(currentState, handleLocalStorage, render, allInputs);
