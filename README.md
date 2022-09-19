@@ -1,6 +1,6 @@
 !["Home page"](https://github.com/huongw/todo-app-2.0/blob/master/docs/home.jpg?raw=true)
 !["Edit task"](https://github.com/huongw/todo-app-2.0/blob/master/docs/edit.jpg?raw=true)
-!["Complete task"](https://github.com/huongw/todo-app-2.0/blob/master/docs/complete.jpg?raw=true)
+!["Complete task"](https://github.com/huongw/todo-app-2.0/blob/master/docs/completeTask.jpg?raw=true)
 
 # Todo App
 
