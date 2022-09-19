@@ -263,6 +263,9 @@ i {
   position: relative;
   width: 85%;
   border: 1px solid #9f9a9a;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   background-color: #fff;
   justify-content: center;
