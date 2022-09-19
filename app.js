@@ -3,6 +3,7 @@ import currentState from "./data/data.js";
 import getDate from "./helpers/getDate.js";
 import render from "./handleTodos/renderTodos.js";
 import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
+import concatNullDatesToEnd from "./helpers/concatNullDatesToEnd.js";
 
 const allInputs = (function () {
   const inputDate = document.querySelector("#input__date");
@@ -84,20 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
       message: "Incomplete"
     }
 
-    data.todos.push(todoObj)
-
-    // filter null dates and dates that exist (1)
-    const nullDates = data.todos.filter(todo  => !todo.dateTime.fullDate);
-    const allDates = data.todos.filter(todo => todo.dateTime.fullDate).sort((a, b) => { 
-      if (a.dateTime.daysLeft < b.dateTime.daysLeft) return -1 
-      if (a.dateTime.daysLeft > b.dateTime.daysLeft) return 1
-      return 0
-    });
-
-    // then concat the null dates to the end of the data.todos array (2)
-    const newData = allDates.concat(nullDates);
-
-    data.todos = newData; // new array is inserted
+    data.todos = concatNullDatesToEnd(data.todos, todoObj);
 
     saveToLocalStorage(data);
     renderTodos(data);
