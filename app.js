@@ -1,7 +1,8 @@
 import handleLocalStorage from "./handleLocalStorage/handleLocalStorage.js";
 import currentState from "./data/data.js";
 import getDate from "./helpers/getDate.js";
-import render from "./handleTodos/renderTodos.js"
+import render from "./handleTodos/renderTodos.js";
+import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
 
 const allInputs = (function () {
   const inputDate = document.querySelector("#input__date");
@@ -32,30 +33,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ======================
 
-(function filterTodos(data, {filter}) {
+(function filterTodos(data, {filter}, {todoList, renderTodos}) {
   filter.addEventListener("change", () => {
-
     data.todos.map(todo => {
-      const todoItem = document.getElementById(`id${todo.id}`);
+      if (filter.value === "complete" && todo.isComplete) {
+        const filterCompleteTasks = data.todos.filter(todo => todo.isComplete);
+        return clearAndFilterTodoList(todoList, data, filterCompleteTasks);
+      } 
+      if (filter.value === "incomplete" && !todo.isComplete) {
+        const filterIncompleteTasks = data.todos.filter(todo => !todo.isComplete)
+        return clearAndFilterTodoList(todoList, data, filterIncompleteTasks);
+      } 
+      if (filter.value === "tasksDueSoon") {
+        const filterTasksDueSoon = data.todos.filter(todo => !todo.isComplete).filter(todo => todo.dateTime.fullDate)
+        .sort((a, b) => { 
+          if (a.dateTime.daysLeft < b.dateTime.daysLeft) return -1 
+          if (a.dateTime.daysLeft > b.dateTime.daysLeft) return 1 
+        });
 
-      if (filter.value === "complete") {
-           if (todo.isComplete) {
-            todoItem.style.display = "flex";
-          } else {
-            todoItem.style.display = "none";
-          }
-        } else if (filter.value === "incomplete") {
-          if (!todo.isComplete) {
-            todoItem.style.display = "flex";
-          } else {
-            todoItem.style.display = "none";
-          }
-        } else {
-            todoItem.style.display = "flex";
-        }
+        return clearAndFilterTodoList(todoList, data, filterTasksDueSoon);
+      } 
+      if (filter.value === "all") {
+        todoList.innerHTML = "";
+        return renderTodos(data);
+      }
     })
   })
-})(currentState, allInputs);
+})(currentState, allInputs, render);
 
 // ======================
 
