@@ -71,6 +71,8 @@ window.addEventListener('DOMContentLoaded', () => {
   todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    if (!inputText.value.trim()) return alert("Add a task first!");
+
     addTodo(inputText.value, inputDate.value);
     
     inputText.value = "";
