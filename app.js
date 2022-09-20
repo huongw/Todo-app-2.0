@@ -19,9 +19,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const { inputDate, inputText, filter } = allInputs;
   
   if (windowReloaded) {
-    const dateArr = new Date().toLocaleDateString().split("/");
-    
-    inputDate.min = `${dateArr[2]}-${dateArr[0] < 10 ? "0" + dateArr[0] : dateArr[0]}-${dateArr[1] < 10 ? "0" + dateArr[1] : dateArr[1]}`;
+    // const dateArr = new Date().toLocaleDateString().split("/");
+
+    // inputDate.min = `${dateArr[2]}-${dateArr[0] < 10 ? "0" + dateArr[0] : dateArr[0]}-${dateArr[1] < 10 ? "0" + dateArr[1] : dateArr[1]}`;
     inputDate.value = "";
     inputText.value = "";
     filter.value = "all";

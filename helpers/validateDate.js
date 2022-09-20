@@ -1,5 +1,5 @@
 export default function validateDate(inputDateValue) {
-  const inputDate = new Date(inputDateValue).getTime();
+  const inputDate = new Date(`${inputDateValue} 23:59:59`).getTime();
   const currentDate = new Date().getTime();
   const diffInTime = inputDate - currentDate;
 
