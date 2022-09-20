@@ -13,7 +13,7 @@ export function calculateDaysLeft(fullDate, daysLeft = undefined) {
   const hours = minutes * 60;
   const days = hours * 24;
 
-  const date = new Date(fullDate.includes("23:59:59") ? fullDate : `${fullDate} 23:59:59`);
+  const date = new Date(fullDate.includes("17:59:59") ? fullDate : `${fullDate} 17:59:59`);
 
   const dueDate = date.getTime();
   const currentDate = new Date().getTime();

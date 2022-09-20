@@ -6,13 +6,11 @@ import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
 import sortDueDates from "./helpers/sortDueDates.js";
 import validateDate from "./helpers/validateDate.js";
 
-const allInputs = (function () {
-  const inputDate = document.querySelector("#input__date");
-  const inputText = document.querySelector("#input__text");
-  const filter = document.querySelector(".select__container");
-
-  return {inputDate, inputText, filter};
-})();
+const allInputs = {
+  inputDate: document.querySelector("#input__date"),
+  inputText: document.querySelector("#input__text"),
+  filter: document.querySelector(".select__container")
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   const windowReloaded = window.performance.getEntriesByType("navigation")[0].type;
