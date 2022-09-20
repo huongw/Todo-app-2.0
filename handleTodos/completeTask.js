@@ -20,14 +20,14 @@ export default function completeTask(data, id, saveToLocalStorage, editButton, m
         todo.isComplete = false;
         todo.message = "Incomplete";
         todo.dateTime.daysLeft = calculateDaysLeft(todo.dateTime.fullDate);
-        data.todos = sortDueDates(data.todos)
-        renderTodos(data)
         editButton.classList.add("active");
         message.classList.remove("complete");
         insertChatBubbleText(todo.isComplete);
       }
     } 
   });
-
+  
+  data.todos = sortDueDates(data.todos)
+  renderTodos(data)
   saveToLocalStorage(data)
 }
