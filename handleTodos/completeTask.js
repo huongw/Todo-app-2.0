@@ -1,7 +1,11 @@
 import { calculateDaysLeft } from "../helpers/calculateDate.js";
 import { insertChatBubbleText } from "../chatBubble/chatBubble.js";
+import sortDueDates from "../helpers/sortDueDates.js";
+import render from "./renderTodos.js";
 
 export default function completeTask(data, id, saveToLocalStorage, editButton, message) {
+  const {renderTodos} = render;
+  
   data.todos.map((todo) => {
     if (todo.id === id) {
       
@@ -16,6 +20,8 @@ export default function completeTask(data, id, saveToLocalStorage, editButton, m
         todo.isComplete = false;
         todo.message = "Incomplete";
         todo.dateTime.daysLeft = calculateDaysLeft(todo.dateTime.fullDate);
+        data.todos = sortDueDates(data.todos)
+        renderTodos(data)
         editButton.classList.add("active");
         message.classList.remove("complete");
         insertChatBubbleText(todo.isComplete);

@@ -3,7 +3,7 @@ import currentState from "./data/data.js";
 import getDate from "./helpers/getDate.js";
 import render from "./handleTodos/renderTodos.js";
 import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
-import concatNullDatesToEnd from "./helpers/concatNullDatesToEnd.js";
+import sortDueDates from "./helpers/sortDueDates.js";
 import validateDate from "./helpers/validateDate.js";
 
 const allInputs = (function () {
@@ -57,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
       return clearAndFilterTodoList(todoList, data, filterIncompleteTasks);
 
     } else if (filter.value === "all") {
-      todoList.innerHTML = "";
       renderTodos(data);
     }
   })
@@ -74,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!inputText.value.trim()) return alert("Add a task first!");
 
     const isValid = validateDate(inputDate.value)
-    if (!isValid) return alert("Date cannot be in the past!");
+    if (!isValid) return alert("Due date cannot be in the past!");
     
     addTodo(inputText.value, inputDate.value);
     
@@ -87,11 +86,13 @@ window.addEventListener('DOMContentLoaded', () => {
       id: data.nextId++,
       task: inputTextValue.charAt(0).toUpperCase() + inputTextValue.slice(1),
       isComplete: false,
-      dateTime: getDate(inputDateValue.split("-")),
-      message: "Incomplete"
+      message: "Incomplete",
+      dateTime: getDate(inputDateValue.split("-"))
     }
 
-    data.todos = concatNullDatesToEnd(data.todos, todoObj);
+    data.todos.push(todoObj)
+
+    data.todos = sortDueDates(data.todos);
 
     saveToLocalStorage(data);
     renderTodos(data);
