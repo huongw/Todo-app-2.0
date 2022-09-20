@@ -4,6 +4,7 @@ import getDate from "./helpers/getDate.js";
 import render from "./handleTodos/renderTodos.js";
 import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
 import concatNullDatesToEnd from "./helpers/concatNullDatesToEnd.js";
+import validateDate from "./helpers/validateDate.js";
 
 const allInputs = (function () {
   const inputDate = document.querySelector("#input__date");
@@ -17,10 +18,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const windowReloaded = window.performance.getEntriesByType("navigation")[0].type;
   const { inputDate, inputText, filter } = allInputs;
   
-  const dateArr = new Date().toLocaleDateString().split("/");
-  inputDate.min = `${dateArr[2]}-${dateArr[0] < 10 ? "0" + dateArr[0] : dateArr[0]}-${dateArr[1] < 10 ? "0" + dateArr[1] : dateArr[1]}`;
-  
   if (windowReloaded) {
+    const dateArr = new Date().toLocaleDateString().split("/");
+    
+    inputDate.min = `${dateArr[2]}-${dateArr[0] < 10 ? "0" + dateArr[0] : dateArr[0]}-${dateArr[1] < 10 ? "0" + dateArr[1] : dateArr[1]}`;
     inputDate.value = "";
     inputText.value = "";
     filter.value = "all";
@@ -72,6 +73,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (!inputText.value.trim()) return alert("Add a task first!");
 
+    const isValid = validateDate(inputDate.value)
+    if (!isValid) return alert("Date cannot be in the past!");
+    
     addTodo(inputText.value, inputDate.value);
     
     inputText.value = "";
