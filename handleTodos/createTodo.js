@@ -38,7 +38,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   <span class="due__date">
     ${todo.dateTime.fullDate ===  null ? "No Due Date" : "Due on " + todo.dateTime.fullDate}
   </span>
-  <span class="daysLeft">
+  <span class="${todo.dateTime.daysLeft < 0 ? "daysLeft overdue" : "daysLeft"}">
     ${updateDaysLeftText(todo.dateTime.daysLeft)}
   </span>`
   taskContainer.appendChild(dateContainer)

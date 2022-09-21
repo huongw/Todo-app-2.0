@@ -64,7 +64,7 @@ h1 {
 
 .todo__message {
   font-size: 12px;
-  color: rgb(255, 0, 0);
+  color: red;
   font-weight: bold;
 }
 
@@ -316,6 +316,10 @@ img {
 
 .active {
   display: inline-block;
+}
+
+.overdue {
+  color: red;
 }
 
 /* Media Queries */
