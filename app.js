@@ -6,11 +6,26 @@ import clearAndFilterTodoList from "./helpers/clearAndFilterTodoList.js"
 import sortDueDates from "./helpers/sortDueDates.js";
 import validateDate from "./helpers/validateDate.js";
 
+initalLoad();
+
+function initalLoad() {
+  const data = currentState;
+  const {getFromLocalStorage} = handleLocalStorage;
+  const {renderTodos} = render;
+
+  getFromLocalStorage(data)
+  renderTodos(data)
+};
+
+// ======================
+
 const allInputs = {
   inputDate: document.querySelector("#input__date"),
   inputText: document.querySelector("#input__text"),
   filter: document.querySelector(".select__container")
 };
+
+// ======================
 
 window.addEventListener('DOMContentLoaded', () => {
   const windowReloaded = window.performance.getEntriesByType("navigation")[0].type;
@@ -25,13 +40,6 @@ window.addEventListener('DOMContentLoaded', () => {
     filter.value = "all";
   }
 });
-
-// ======================
-
-(function initalLoad(data, {getFromLocalStorage}, {renderTodos}) {
-  getFromLocalStorage(data)
-  renderTodos(data)
-})(currentState, handleLocalStorage, render);
 
 // ======================
 
