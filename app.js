@@ -4,7 +4,7 @@ import getDate from "./helpers/getDate.js";
 import render from "./handleTodos/renderTodos.js";
 import validateDate from "./helpers/validateDate.js";
 import saveAndReload from "./helpers/saveAndReload.js";
-import checkFilter from "./helpers/checkFilter.js";
+import filterTodos from "./helpers/filterTodos.js";
 import {allInputs} from "./data/data.js"
 
 initalLoad();
@@ -23,7 +23,7 @@ function initalLoad() {
 {
   const {filter} = allInputs;
   const data = currentState;
-  filter.addEventListener("change", () => checkFilter(data));
+  filter.addEventListener("change", () => filterTodos(data));
 }
 
 // ======================
@@ -56,6 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!isValid) return alert("Due date cannot be in the past!");
     
     addTodo(inputText.value, inputDate.value);
+    saveAndReload(data, saveToLocalStorage)
     
     inputText.value = "";
     inputDate.value = "";
@@ -71,7 +72,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     data.todos.push(todoObj)
-    saveAndReload(data, saveToLocalStorage)
   }
 
 })(currentState, handleLocalStorage, allInputs);

@@ -2,7 +2,7 @@ import {allInputs} from "../data/data.js"
 import render from "../handleTodos/renderTodos.js";
 import sortDueDates from "./sortDueDates.js";
 
-export default function checkFilter(data) {
+export default function filterTodos(data) {
   const {filter} = allInputs;
   const {renderTodos, renderFilteredTodos, todoList} = render;
 
