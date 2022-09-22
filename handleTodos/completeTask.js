@@ -1,10 +1,8 @@
 import { calculateDaysLeft } from "../helpers/calculateDate.js";
 import { insertChatBubbleText } from "../chatBubble/chatBubble.js";
-import sortDueDates from "../helpers/sortDueDates.js";
-import render from "./renderTodos.js";
+import saveAndReload from "../helpers/saveAndReload.js";
 
 export default function completeTask(data, id, saveToLocalStorage, editButton, message) {
-  const {renderTodos} = render;
   
   data.todos.map((todo) => {
     if (todo.id === id) {
@@ -26,8 +24,6 @@ export default function completeTask(data, id, saveToLocalStorage, editButton, m
       }
     } 
   });
-  
-  data.todos = sortDueDates(data.todos)
-  renderTodos(data)
-  saveToLocalStorage(data)
+
+  saveAndReload(data, saveToLocalStorage);
 }

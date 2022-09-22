@@ -8,12 +8,12 @@ export default (function render({saveToLocalStorage}) {
     todoList.innerHTML = "";
     data.todos.map((todo) => todoList.append(createTodo(data, todo, todoList, saveToLocalStorage)));
   }
-
+  
   function renderFilteredTodos(data, todos) {
+    todoList.innerHTML = "";
     todos.map((todo) => todoList.append(createTodo(data, todo, todoList, saveToLocalStorage)));
   }
   
-
   return {todoList, renderTodos, renderFilteredTodos}
 
 })(handleLocalStorage);
