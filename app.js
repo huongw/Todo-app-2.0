@@ -21,7 +21,9 @@ function initalLoad() {
 // ======================
 
 {
-  allInputs.filter.addEventListener("change", () => checkFilter(currentState));
+  const {filter} = allInputs;
+  const data = currentState;
+  filter.addEventListener("change", () => checkFilter(data));
 }
 
 // ======================
