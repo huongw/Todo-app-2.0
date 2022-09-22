@@ -1,6 +1,6 @@
-import checkFilter from "./checkFilter.js";
+import filterTodos from "./filterTodos.js";
 
 export default function saveAndReload(data, saveToLocalStorage) {
-  checkFilter(data)
+  filterTodos(data)
   saveToLocalStorage(data);
 }
