@@ -1,5 +1,5 @@
 import { calculateDaysLeft } from "../helpers/calculateDate.js";
-import { insertChatBubbleText } from "../chatBubble/chatBubble.js";
+// import { insertChatBubbleText } from "../chatBubble/chatBubble.js";
 import saveAndReload from "../helpers/saveAndReload.js";
 
 export default function completeTask(data, id, saveToLocalStorage, editButton, message) {
@@ -13,14 +13,14 @@ export default function completeTask(data, id, saveToLocalStorage, editButton, m
         todo.dateTime.daysLeft = null;
         editButton.classList.remove("active");
         message.classList.add("complete");
-        insertChatBubbleText(todo.isComplete);
+        // insertChatBubbleText(todo.isComplete);
       } else {
         todo.isComplete = false;
         todo.message = "Incomplete";
         todo.dateTime.daysLeft = calculateDaysLeft(todo.dateTime.fullDate);
         editButton.classList.add("active");
         message.classList.remove("complete");
-        insertChatBubbleText(todo.isComplete);
+        // insertChatBubbleText(todo.isComplete);
       }
     } 
   });

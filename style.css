@@ -12,29 +12,25 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: rgb(213,147,198);
-  background: linear-gradient(90deg, rgba(213,147,198,1) 18%, rgba(0,212,255,1) 100%);
+  background: rgb(234, 231, 233);
+  background: url("./images/bg.jpg") no-repeat 50% 50%;
   font-family: 'Nunito', sans-serif;
 }
 
 h1 {
   color: #fff;
-}
-
-::selection {
-  background: rgb(138, 170, 235);
+  font-family: 'Noto Sans', sans-serif;
 }
 
 /* Todo */
 #todo__form {
   min-height: 200px;
-  border-bottom: 1px solid rgb(155, 154, 154);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  background-color: rgb(138, 170, 235);
+  background-color: rgba(93, 92, 92, 0.5);
 }
 
 .form__wrapper {
@@ -48,7 +44,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 2px 5px rgb(93, 92, 92);
+  box-shadow: 0 0 5px rgb(36, 36, 36);
   max-width: 700px;
   width: 90%;
   min-width: 230px;
@@ -64,12 +60,12 @@ h1 {
 
 .todo__message {
   font-size: 12px;
-  color: red;
+  color: rgb(255, 0, 0);
   font-weight: bold;
 }
 
 .todo__message.complete {
-  color: rgb(136, 91, 200);
+  color: rgb(10, 112, 22);
 }
 
 .todo__content {
@@ -86,7 +82,7 @@ h1 {
 #todo__list {
   min-height: 70vh;
   width: 100%;
-  background-color: #fff;
+  background-color: rgba(255,255,255);
 }
 
 /* List Items */
@@ -98,10 +94,13 @@ li {
 }
 
 li:nth-of-type(odd) {
-  background-color: rgba(212, 228, 236, 0.5);
+  background-color: rgba(199, 222, 233, 0.5);
 }
 li:nth-of-type(even) {
-  background-color: rgba(184, 206, 219, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+li:last-child {
+  box-shadow: 0 8px 10px rgba(104, 102, 102,.5);
 }
 
 .editable {
@@ -109,7 +108,8 @@ li:nth-of-type(even) {
   padding: 5px;
   width: 95%;
   word-wrap: break-word;
-  outline: 1px solid rgb(227, 139, 227);
+  outline: 1px solid rgb(157, 157, 157);
+  background-color: #fff;
 }
 
 
@@ -130,8 +130,8 @@ li:nth-of-type(even) {
   align-items: center;
   justify-content: center;
   border-radius: 0;
-  border: 1px solid rgb(227, 139, 227);
-  background-color: rgb(227, 139, 227);
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -139,8 +139,8 @@ li:nth-of-type(even) {
 }
 
 #submitBtn:hover {
-  background-color: rgb(154, 103, 226);
-  border: 1px solid rgb(154, 103, 226);
+  background-color: rgb(64, 63, 64);
+  border: 1px solid rgb(64, 63, 64);
 }
 
 .button__container {
@@ -167,7 +167,7 @@ button {
   width: 100%;
   padding-left: 2%;
   cursor: pointer;
-  color: rgb(154, 103, 226);
+  color: rgb(65, 65, 67);
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
 }
@@ -185,7 +185,7 @@ button {
   display: flex!important;
   align-items: center;
   justify-content: center;
-  color: rgb(154, 103, 226);
+  color: rgb(16, 16, 17);
   pointer-events: none;
   margin: 0;
   transition: .2s linear;
@@ -193,15 +193,10 @@ button {
 
 .select:hover .fa-chevron-down {
   color: #fff!important;
-  background-color: rgb(154, 103, 226)!important;
+  background-color: rgb(0, 0, 0)!important;
 }
 
 /* Input */
-input[type="checkbox"] {
-  -webkit-filter: hue-rotate(266deg) saturate(92%);
-  filter: hue-rotate(266deg) saturate(92%);
-}
-
 #input__text {
   border: 1px solid #9f9a9a;
   border-radius: 0;
@@ -213,7 +208,7 @@ input[type="checkbox"] {
   cursor: pointer;
   width: 98%;
   border: none;
-  color: rgb(154, 103, 226);
+  color: rgb(65, 65, 67);
   background-color: #fff;
 }
 
@@ -247,6 +242,7 @@ i {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  color:#000;
 }
 
 /* Date */
@@ -254,10 +250,15 @@ i {
   line-height: 10px;
 }
 
-.due__date,
+.due__date {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgb(65, 65, 67);
+}
+
 .daysLeft {
-  font-size: 11px;
-  color: rgb(154, 103, 226);
+  font-size: 9px;
+  color: rgb(36, 36, 36);
 }
 
 .date {
@@ -269,7 +270,7 @@ i {
 }
 
 /* Images */
-.img__wrapper {
+/* .img__wrapper {
   position: absolute;
   bottom: 4vh;
   right: 2vw;
@@ -304,7 +305,7 @@ img {
   left: 58px;
   top: 50px;
   text-align: center;
-}
+} */
 
 /* Other */
 .save,
@@ -319,7 +320,7 @@ img {
 }
 
 .overdue {
-  color: red;
+  color: rgb(255, 0, 0);
 }
 
 /* Media Queries */
@@ -367,8 +368,11 @@ img {
 }
 
 @media only screen and (max-width: 360px) {
-  .due__date, .daysLeft {
-    font-size: 10px;
+  .due__date {
+    font-size: 9px;
+  }
+  .daysLeft {
+    font-size: 8px;
   }
   .button__container {
     width: 65px;
@@ -384,8 +388,11 @@ img {
   .todo__message {
     font-size: 10px;
   }
-  .due__date, .daysLeft {
+  .due__date {
     font-size: 8px;
+  }
+  .daysLeft {
+    font-size: 7px;
   }
   .editable {
     padding: 2px;
