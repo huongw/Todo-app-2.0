@@ -252,13 +252,13 @@ i {
 }
 
 .due__date {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   color: rgb(65, 65, 67);
 }
 
 .daysLeft {
-  font-size: 9px;
+  font-size: 11px;
   color: rgb(36, 36, 36);
 }
 
@@ -370,10 +370,10 @@ img {
 
 @media only screen and (max-width: 360px) {
   .due__date {
-    font-size: 9px;
+    font-size: 10px;
   }
   .daysLeft {
-    font-size: 8px;
+    font-size: 9px;
   }
   .button__container {
     width: 65px;
@@ -390,10 +390,10 @@ img {
     font-size: 10px;
   }
   .due__date {
-    font-size: 8px;
+    font-size: 9px;
   }
   .daysLeft {
-    font-size: 7px;
+    font-size: 8px;
   }
   .editable {
     padding: 2px;
