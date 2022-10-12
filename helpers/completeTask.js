@@ -1,6 +1,6 @@
-import { calculateDaysLeft } from "../helpers/calculateDate.js";
+import { calculateDaysLeft } from "./calculateDate.js";
 // import { insertChatBubbleText } from "../chatBubble/chatBubble.js";
-import saveAndReload from "../helpers/saveAndReload.js";
+import saveAndReload from "./saveAndReload.js";
 
 export default function completeTask(data, id, saveToLocalStorage, editButton, message) {
   

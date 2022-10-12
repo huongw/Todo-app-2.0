@@ -1,14 +1,12 @@
-export default (function currentState () {
-  const data = {
+export const data = {
     todos: [],
     nextId: 1
-  }
-  
-  return data
-})();
+}
 
 export const allInputs = {
   inputDate: document.querySelector("#input__date"),
   inputText: document.querySelector("#input__text"),
-  filter: document.querySelector(".select__container")
+  filter: document.querySelector(".select__container"),
+  todoList: document.querySelector("#todo__list"),
+  todoForm: document.querySelector("#todo__form")
 };

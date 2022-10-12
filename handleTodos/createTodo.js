@@ -1,6 +1,10 @@
-import completeTask from "./completeTask.js";
+import updateDaysLeftText from "../helpers/updateDaysLeftText.js";
+import {handleCancelButton, handleDeleteButton, handleSaveButton, handleEditButton, handleCheckbox} from "../handleEventListeners/handleEventListeners.js";
+import { allInputs } from "../data/data.js";
 
-export default function createTodo(data, todo, todoList, saveToLocalStorage) {
+const {todoList} = allInputs;
+
+export default function createTodo(todo) {
   // Id
   const id = todo.id;
   
@@ -21,15 +25,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   li.appendChild(taskContainer)
 
   const checkbox = taskContainer.querySelector(".checkbox");
-  const message = taskContainer.querySelector(".todo__message");
-  checkbox.addEventListener("click", () => {
-    completeTask(data, id, saveToLocalStorage, editButton, message);
-    const todoMessage = taskContainer.querySelector(".todo__message");
-    todoMessage.innerText = todo.message;
-
-    const daysLeft = dateContainer.querySelector(".daysLeft");
-    daysLeft.innerText = updateDaysLeftText(todo.dateTime.daysLeft);
-  })
+  checkbox.addEventListener("click", () => handleCheckbox(id, taskContainer, dateContainer, editButton, todo))
 
   // Date container
   const dateContainer = document.createElement("span");
@@ -54,17 +50,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   editButton.innerHTML = `<i class="fa fa-edit"></i>`;
   btnsContainer.appendChild(editButton)
 
-  editButton.addEventListener("click", () => {
-    const todoItem = document.querySelector(`#id${id} .todo`);
-    todoItem.contentEditable = true;
-    todoItem.classList.add("editable");
-
-    checkbox.classList.remove("active");
-
-    saveButton.classList.add("active");
-    editButton.classList.remove("active");
-    cancelButton.classList.add("active");
-  })
+  editButton.addEventListener("click", () => handleEditButton(id, checkbox, editButton, saveButton, cancelButton))
   
   // Create save button
   const saveButton = document.createElement("button");
@@ -72,13 +58,7 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   saveButton.innerHTML = `<i class="fa fa-save"></i>`;
   btnsContainer.appendChild(saveButton);
   
-  saveButton.addEventListener("click", () => {
-    const todoItem = document.querySelector(`#id${id} .todo`);
-    if (!todoItem.textContent.trim()) return alert("Input field cannot be empty!");
-
-    handleSaveCancelChanges(data, id, saveChanges, checkbox, saveButton, cancelButton, editButton)
-    saveToLocalStorage(data)
-  })
+  saveButton.addEventListener("click", () => handleSaveButton(id, checkbox, saveButton, cancelButton, editButton))
   
   // Create cancel button
   const cancelButton = document.createElement("button");
@@ -86,69 +66,14 @@ export default function createTodo(data, todo, todoList, saveToLocalStorage) {
   cancelButton.innerHTML = `<i class="material-icons">&#xe5cd;</i>`;
   btnsContainer.appendChild(cancelButton);
   
-  cancelButton.addEventListener("click", () => {
-    handleSaveCancelChanges(data, id, cancelChanges, checkbox, saveButton, cancelButton, editButton)
-  })
+  cancelButton.addEventListener("click", () => handleCancelButton(id, checkbox, saveButton, cancelButton, editButton))
 
   // Create delete button
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = `<i class="fa fa-trash-o"></i>`;
   btnsContainer.appendChild(deleteButton)
 
-  deleteButton.addEventListener("click", () => {
-    data.todos = data.todos.filter((todo) => todo.id !== id);
-    todoList.removeChild(li)
-    saveToLocalStorage(data);
-  })
+  deleteButton.addEventListener("click", () => handleDeleteButton(id, li, todoList))
 
   return li
 };
-
-function handleSaveCancelChanges(data, id, updateSaveCancelChanges, checkbox, saveButton, cancelButton, editButton) {
-  const todoItem = document.querySelector(`#id${id} .todo`);
-  todoItem.contentEditable = false;
-  todoItem.classList.remove("editable");
-
-  checkbox.classList.add("active");
-
-  saveButton.classList.remove("active");
-  cancelButton.classList.remove("active");
-  editButton.classList.add("active");
-
-  updateSaveCancelChanges(data, id, todoItem);
-}
-
-function saveChanges(data, id, todoItem) {
-  data.todos.map((todo) => {
-    if (todo.id === id) {
-      todo.task = todoItem.innerHTML;
-    }
-  });
-
-}
-
-function cancelChanges(data, id, todoItem) {
-  data.todos.map((todo) => {
-    if (todo.id === id) {
-      todoItem.innerHTML = todo.task;
-    }
-  });
-}
-
-function updateDaysLeftText(daysLeft) {
-  if (daysLeft < 0) {
-    return "(Overdue)"
-  } 
-  if (daysLeft === null) {
-    return ""
-  }
-  if (daysLeft > 1) {
-    return "(" + daysLeft + " days left)"
-  } 
-  if (daysLeft === 0) {
-    return "(Due Today)"
-  }
-  if (daysLeft === 1) {
-    return "(Due Tomorrow)"
-  }
-}
