@@ -5,8 +5,8 @@ import renderTodos from "./handleTodos/renderTodos.js";
 import validateDate from "./helpers/validateDate.js";
 import saveAndReload from "./helpers/saveAndReload.js";
 
-const { inputDate, inputText, filter, todoForm } = allInputs;
-const {getFromLocalStorage, saveToLocalStorage} = handleLocalStorage;
+const { inputDate, inputText, filter } = allInputs;
+const { getFromLocalStorage, saveToLocalStorage } = handleLocalStorage;
 
 initalLoad();
 
@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ======================
 
+const todoForm = document.querySelector("#todo__form");
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
