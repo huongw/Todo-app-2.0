@@ -6,14 +6,11 @@ import validateDate from "./helpers/validateDate.js";
 import saveAndReload from "./helpers/saveAndReload.js";
 
 const { inputDate, inputText, filter } = allInputs;
-const { getFromLocalStorage, saveToLocalStorage } = handleLocalStorage;
 
-initalLoad();
-
-function initalLoad() {
+(function initalLoad({getFromLocalStorage}) {
   getFromLocalStorage(data)
   renderTodos(data.todos)
-};
+})(handleLocalStorage);
 
 // ======================
 
@@ -32,30 +29,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ======================
 
-const todoForm = document.querySelector("#todo__form");
-todoForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+(function submitTodo({saveToLocalStorage}) {
+  const todoForm = document.querySelector("#todo__form");
 
-  if (!inputText.value.trim()) return alert("Add a task first!");
-
-  const isValid = validateDate(inputDate.value)
-  if (!isValid) return alert("Due date cannot be in the past!");
+  todoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
   
-  addTodo(inputText.value, inputDate.value);
-  saveAndReload(data, saveToLocalStorage)
+    if (!inputText.value.trim()) return alert("Add a task first!");
   
-  inputText.value = "";
-  inputDate.value = "";
-})
+    const isValid = validateDate(inputDate.value)
+    if (!isValid) return alert("Due date cannot be in the past!");
+    
+    addTodo(inputText.value, inputDate.value);
+    saveAndReload(data, saveToLocalStorage)
+    
+    inputText.value = "";
+    inputDate.value = "";
+  })
+    
+  function addTodo(inputTextValue, inputDateValue) {
+    const todoObj = {
+      id: data.nextId++,
+      task: inputTextValue.charAt(0).toUpperCase() + inputTextValue.slice(1),
+      isComplete: false,
+      message: "Incomplete",
+      dateTime: getDate(inputDateValue.split("-"))
+    }
   
-function addTodo(inputTextValue, inputDateValue) {
-  const todoObj = {
-    id: data.nextId++,
-    task: inputTextValue.charAt(0).toUpperCase() + inputTextValue.slice(1),
-    isComplete: false,
-    message: "Incomplete",
-    dateTime: getDate(inputDateValue.split("-"))
-  }
-
-  data.todos.push(todoObj)
-};
+    data.todos.push(todoObj)
+  };
+})(handleLocalStorage);
