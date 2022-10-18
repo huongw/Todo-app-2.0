@@ -65,7 +65,7 @@ function handleSaveCancelChanges(id, updateSaveCancelChanges, checkbox, saveButt
 function saveChanges(id, todoItem) {
   data.todos.map((todo) => {
     if (todo.id === id) {
-      todo.task = todoItem.innerHTML;
+      todo.task = todoItem.textContent;
     }
   });
 
@@ -74,7 +74,7 @@ function saveChanges(id, todoItem) {
 function cancelChanges(id, todoItem) {
   data.todos.map((todo) => {
     if (todo.id === id) {
-      todoItem.innerHTML = todo.task;
+      todoItem.textContent = todo.task;
     }
   });
 }

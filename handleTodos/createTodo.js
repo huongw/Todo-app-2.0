@@ -15,13 +15,17 @@ export default function createTodo(todo) {
   // Task container
   const taskContainer = document.createElement("span");
   taskContainer.setAttribute("class", "task__container");
-  taskContainer.innerHTML = `
-  <span class="todo__message ${todo.isComplete ? "complete" : ""}">${todo.message}</span>
-  <span class="todo__content">
-    <input type="checkbox" class="checkbox active" ${todo.isComplete ? "checked" : ""}>
-    <span class="todo">${todo.task}</span>
-  </span>
-  `
+  taskContainer.innerHTML = `<span class="todo__message ${todo.isComplete ? "complete" : ""}">${todo.message}</span>`
+
+  const todoEl = document.createElement("span");
+  const todoContent = document.createElement("span");
+  todoEl.setAttribute("class", "todo");
+  todoContent.setAttribute("class", "todo__content");
+  todoContent.innerHTML = `<input type="checkbox" class="checkbox active" ${todo.isComplete ? "checked" : ""}>`
+  todoEl.textContent = todo.task
+  
+  todoContent.appendChild(todoEl)
+  taskContainer.appendChild(todoContent)
   li.appendChild(taskContainer)
 
   const checkbox = taskContainer.querySelector(".checkbox");
