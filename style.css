@@ -11,9 +11,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: rgb(234, 231, 233);
-  background: url("./images/bg.jpg") no-repeat 50% 50%;
+  height: 100vh;
+  background: rgb(156,164,213);
+  background: linear-gradient(59deg, rgba(156,164,213,1) 0%, rgba(0,212,255,1) 0%, rgba(112,178,225,1) 0%, rgba(213,147,198,1) 100%);
   background-size: cover;
   font-family: 'Nunito', sans-serif;
 }
@@ -24,14 +24,28 @@ h1 {
 }
 
 /* Todo */
+#todo__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px rgb(79, 78, 78);
+  max-width: 700px;
+  width: 95%;
+  min-width: 230px;
+  max-height: 1000px;
+  height: 95%;
+  margin: 5vh 0;
+}
+
 #todo__form {
-  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  background-color: rgba(93, 92, 92, 0.5);
+  padding: 5% 0;
+  background: rgb(156,164,213);
+  background: linear-gradient(59deg, rgba(156,164,213,1) 0%, rgba(0,212,255,1) 0%, rgba(213,147,198,1) 0%, rgba(213,147,198,1) 0%, rgba(112,178,225,1) 100%);
 }
 
 .form__wrapper {
@@ -39,17 +53,7 @@ h1 {
   flex-direction: column;
   width: 50%;
   position: relative;
-}
-
-#todo__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0 5px rgb(36, 36, 36);
-  max-width: 700px;
-  width: 90%;
-  min-width: 230px;
-  margin: 5vh 0;
+  margin: 2% 0;  
 }
 
 .task__container {
@@ -81,9 +85,10 @@ h1 {
 }
 
 #todo__list {
-  min-height: 70vh;
   width: 100%;
-  background-color: rgba(255,255,255);
+  background-color: rgb(246, 240, 240);
+  overflow-y: scroll;
+  height: 100%;
 }
 
 /* List Items */
@@ -131,8 +136,7 @@ li:last-child {
   align-items: center;
   justify-content: center;
   border-radius: 0;
-  border: 1px solid rgb(0, 0, 0);
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(209, 139, 209);
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -140,8 +144,7 @@ li:last-child {
 }
 
 #submitBtn:hover {
-  background-color: rgb(64, 63, 64);
-  border: 1px solid rgb(64, 63, 64);
+  background-color: rgb(200, 101, 200);
 }
 
 .button__container {
@@ -186,7 +189,7 @@ button {
   display: flex!important;
   align-items: center;
   justify-content: center;
-  color: rgb(16, 16, 17);
+  color: rgb(209, 139, 209);
   pointer-events: none;
   margin: 0;
   transition: .2s linear;
@@ -194,7 +197,7 @@ button {
 
 .select:hover .fa-chevron-down {
   color: #fff!important;
-  background-color: rgb(0, 0, 0)!important;
+  background-color: rgb(200, 101, 200)!important;
 }
 
 /* Input */
@@ -271,12 +274,13 @@ i {
 }
 
 /* Images */
-/* .img__wrapper {
+.img__wrapper {
   position: absolute;
   bottom: 4vh;
   right: 2vw;
   width: 300px;
   height: 300px;
+  filter: drop-shadow(20px 5px 5px rgba(42, 41, 41, 0.5));
 }
 
 img {
@@ -306,7 +310,7 @@ img {
   left: 58px;
   top: 50px;
   text-align: center;
-} */
+}
 
 /* Other */
 .save,
@@ -341,15 +345,6 @@ img {
 }
 
 @media only screen and (max-width: 450px) {
-  #todo__container {
-    margin: 1.5vh 0;
-    width: 95%;
-  }
-
-  #todo__form {
-    height: auto;
-  }
-  
   h1 {
     font-size: 7vw;
   }
